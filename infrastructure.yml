@@ -1,0 +1,17 @@
+---
+- hosts: dns_nodes
+  tasks:
+    - name: Include all yml files in vars/all and all nested directories (2.3)
+      include_vars:
+        dir: vars/domains
+        extensions:
+          - yml
+        name: domains
+    - debug:
+        msg: "{{domains}}"
+    - template:
+        src: templates/edu-cloud.uek.krakow.pl
+        dest: /etc/bind/edu-cloud.uek.krakow.pl
+    - service:
+        name: bind9
+        state: restarted
