@@ -14,4 +14,4 @@
         dest: /etc/bind/edu-cloud.uek.krakow.pl
     - service:
         name: bind9
-        state: restarted
+        state: reloaded
